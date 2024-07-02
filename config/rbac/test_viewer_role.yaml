@@ -1,0 +1,23 @@
+# permissions for end users to view tests.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: learn-k8s-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: test-viewer-role
+rules:
+- apiGroups:
+  - test.abhi.go
+  resources:
+  - tests
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - test.abhi.go
+  resources:
+  - tests/status
+  verbs:
+  - get
